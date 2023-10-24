@@ -14,15 +14,13 @@ public class Change {
         Student head = initStudent();
 
         // 新增数据
-
         BaseStudent[] addList = new BaseStudent[3];
         addList[0] = (new BaseStudent("cc", "Python"));
         addList[1] = (new BaseStudent("bc", "CPP"));
         addList[2] = (new BaseStudent("ac", "Java"));
 
-        // 新增方法
+        // 新增
         head = add(head, addList);
-
         System.out.println(toString(head));
     }
 
@@ -52,7 +50,6 @@ public class Change {
 
         return head;
     }
-
     public static BaseStudent[] getList() {
         BaseStudent[] initList = new BaseStudent[9];
         initList[0] = (new BaseStudent("DummyJava", "Java"));

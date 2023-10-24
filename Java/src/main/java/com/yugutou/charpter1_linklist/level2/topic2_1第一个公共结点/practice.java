@@ -127,6 +127,47 @@ public class practice {
         return p1;
     }
 
+    public static ListNode findWithTwoPoint(ListNode pHead1, ListNode pHead2) {
+        if (pHead1 == null || pHead2 == null) return null;
+
+        ListNode temp1 = pHead1, temp2 = pHead2;
+        int head1Len = 0, head2Len = 0;
+
+        while (temp1 != null) {
+            temp1 = temp1.next;
+            head1Len++;
+        }
+
+        while (temp2 != null) {
+            temp2 = temp2.next;
+            head2Len++;
+        }
+
+        ListNode cur = pHead1;
+        ListNode cur2 = pHead2;
+        int len = head1Len - head2Len > 0 ? head1Len - head2Len : head2Len - head1Len;
+
+        if (head1Len > head2Len) {
+            int a = 0;
+            while (len > a++) {
+                cur = cur.next;
+            }
+        }
+
+        if (head2Len > head1Len) {
+            int a = 0;
+            while (len > a++) {
+                cur2 = cur2.next;
+            }
+        }
+
+        while (cur2 != cur) {
+            cur2 = cur2.next;
+            cur = cur.next;
+        }
+        return cur;
+    }
+
     // 初始化连表
     static ListNode[] initLinkedList() {
         ListNode[] heads = new ListNode[2];

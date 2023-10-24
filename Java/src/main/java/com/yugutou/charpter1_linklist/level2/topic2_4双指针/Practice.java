@@ -51,26 +51,27 @@ public class Practice {
      * 旋转链表
      */
     public static ListNode rotateRight(ListNode head, int k) {
+
         if (head == null) {
             return null;
         }
-        // 快指针先走k，慢指针再走，tmep用于存储head节点
-        ListNode slow = head, fast = head, temp = head;
 
-        // 获取长度
-        int len  = 0;
-        while (head != null) {
-            head = head.next;
-            len ++;
+        int len = 0;
+
+        ListNode lenNode = head;
+        ListNode fast = head;
+        ListNode slow = head;
+        // 遍历获取长度
+        while (lenNode != null) {
+            len++;
+            lenNode = lenNode.next;
         }
 
-        // 如果是刚好走len的长度 就没有变化
-        if(len % k == 0) {
-            return temp;
+        if (k % len == 0) {
+            return head;
         }
 
-        int i = k;
-        while (fast != null && i-- > 0) {
+        while (k-- % len > 0) {
             fast = fast.next;
         }
 
@@ -79,12 +80,42 @@ public class Practice {
             slow = slow.next;
         }
 
-        // slow到了第k个的位置
-        ListNode slowNext = slow.next;
-        slow.next = null;
-        fast.next = temp;
-        return slowNext;
+        ListNode res = slow.next;
+        fast.next = head;
+        res.next = null;
 
+        return null;
+    }
+
+    /**
+     * 寻找第一个公共子节点 拼接
+     *
+     * @param head  第一个链表
+     * @param head2 第二个链表
+     */
+    public static ListNode findFirstWithStr(ListNode head, ListNode head2) {
+
+        if (head == null || head2 == null) return null;
+
+        ListNode p1 = head;
+        ListNode p2 = head2;
+
+        while (p1 != p2) {
+            p1 = p1.next;
+            p2 = p2.next;
+
+            if (p1 != p2) {
+                if (p1 == null) {
+                    p1 = head2;
+                }
+
+                if (p2 == null) {
+                    p2 = head;
+                }
+            }
+
+        }
+        return p1;
     }
 
 }

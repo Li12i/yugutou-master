@@ -64,7 +64,6 @@ public class HasCycle {
      * @param head
      * @return
      */
-
     public static boolean hasCycleByTwoPoint(ListNode head) {
         if (head == null || head.next == null) {
             return false;

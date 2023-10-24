@@ -2,10 +2,10 @@ package com.yugutou.charpter2_reverselist.level1;
 
 public class ReverseList {
     public static void main(String[] args) {
-        int[] a = {4, 3, 2, 1};
+        int[] a = {5, 4, 3, 2, 1};
         ListNode nodeA = initLinkedList(a);
         ListNode d = null;
-        int testMethod = 4;
+        int testMethod = 2;
         switch (testMethod) {
             case 1://方法2：虚拟结点，,并复用已有的结点
                 d = reverseListByDummyNotCreate(nodeA);
@@ -23,7 +23,7 @@ public class ReverseList {
 
     /**
      * 方法1：虚拟结点，,并复用已有的结点
-     *
+     *  头插法 插入
      * @param head
      * @return
      */
