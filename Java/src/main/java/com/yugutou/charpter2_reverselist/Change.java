@@ -1,70 +1,84 @@
 package com.yugutou.charpter2_reverselist;
 
-import com.yugutou.charpter2_reverselist.level3.Practice;
-
 public class Change {
 
     public static void main(String[] args) {
         int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         ListNode nodeA = initLinkedList(a);
 
-        System.out.println(toString(nodeA));
+        ListNode res = help(nodeA);
+        System.out.println(toString(res));
     }
 
     /**
      * 将偶数位的数据进行翻转 1
+     *
      * @param head
      * @return
      */
     public static ListNode help(ListNode head) {
 
-        if(head == null) return null;
+        if (head == null) return null;
 
-        // 现将偶数 个 数据进行 获取反转，在进行插入
-        ListNode evenDummyHead = new ListNode(-1);
+        // 1.获取所有偶数项
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode curseOdd = odd;//游标A
+        ListNode curseEven = even;//游标B
 
-        ListNode curr = head;
-        ListNode eCurr = evenDummyHead;
+        while (curseEven != null) {
+            if (curseEven.next != null) {
+                curseOdd.next = curseEven.next;
+                curseOdd = curseOdd.next;
+                curseEven.next = curseOdd.next;
+                curseEven = curseEven.next;
+            } else {
+                curseOdd.next = null;
+                curseEven.next = null;
+                break;
+            }
+        }
+
+        // 2.翻转
+        even = reverse(even);
+
+        // 重置
+        curseOdd = odd;
+        curseEven = even;
+
+        // 创建结果
+        ListNode ans = new ListNode(-1);
+        ListNode cur = ans;
+
+        // 合并
         int i = 1;
-        while (curr != null) {
+        while (curseOdd != null && curseEven != null) {
             if (i++ % 2 == 0) {
-                eCurr.next = curr;
-                eCurr = eCurr.next;
+                cur.next = curseEven;
+                curseEven = curseEven.next;
+                cur = cur.next;
+            } else {
+                cur.next = curseOdd;
+                curseOdd = curseOdd.next;
+                cur = cur.next;
             }
-            curr = curr.next;
         }
+        cur.next = curseOdd != null ? curseOdd : curseEven;
 
-        // 翻转偶数链表
-        evenDummyHead.next = reverse(evenDummyHead.next);
-
-        curr = head;
-        eCurr = evenDummyHead.next;
-
-        i = 1;
-        while (curr != null) {
-            if (i++ % 2 == 0) {
-                eCurr.next = curr.next;
-                curr.next = eCurr;
-                eCurr = eCurr.next;
-
-            }
-            curr = curr.next;
-        }
-
-        return null;
+        return ans.next;
     }
 
     // 头插法
     public static ListNode reverse(ListNode head) {
-        ListNode curr = head;
-        ListNode dummyHead = new ListNode(-1);
-        while (curr != null) {
-            ListNode next = curr.next;
-            curr = next;
-            next.next = dummyHead.next;
-            dummyHead.next = next;
+        ListNode prev = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
         }
-        return dummyHead.next;
+        return prev;
     }
 
 
