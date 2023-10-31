@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Division {
     public static void main(String[] args) {
         int[] arr = {3, 1, 2, 4};
-        int test = 1;
+        int test = 2;
         if (test == 2) {
             //双指针,不稳定的方法
             System.out.println(Arrays.toString(sortArrayByParity(arr)));

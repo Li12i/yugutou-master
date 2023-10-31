@@ -12,8 +12,8 @@ public class ReplaceSpace {
     /**
      * 方法1：创建新的字符串
      *
-     * @param str
-     * @return
+     * @param str 字符串
+     * @return 字符串
      */
     public static String replaceSpace1(StringBuffer str) {
         String res = "";

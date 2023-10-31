@@ -8,7 +8,7 @@ package com.yugutou.charpter3_array.level2.topic2_1删除元素;
 public class DeleteVal {
     public static void main(String[] args) {
         int[] arr = {3, 2, 2, 3, 3};
-        int test = 2;
+        int test = 1;
 
         if (test == 1) {//快慢指针
             System.out.println(removeElement(arr, 3));
@@ -46,8 +46,6 @@ public class DeleteVal {
      * @param val
      * @return
      */
-
-
     public static int removeElement2(int[] nums, int val) {
 
 //        3, 3, 3, [], []
