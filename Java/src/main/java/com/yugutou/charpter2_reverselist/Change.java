@@ -3,7 +3,7 @@ package com.yugutou.charpter2_reverselist;
 public class Change {
 
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
         ListNode nodeA = initLinkedList(a);
 
         ListNode res = help(nodeA);
@@ -42,7 +42,7 @@ public class Change {
         // 2.翻转
         even = reverse(even);
 
-        // 重置
+        // 重置到开头节点
         curseOdd = odd;
         curseEven = even;
 
