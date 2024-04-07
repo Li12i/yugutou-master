@@ -29,7 +29,7 @@ public class PeakIndexInMountainArray {
 
         int left = 1, right = arr.length - 2;
 
-        while (left <= right) {
+        while (left < right) {
             int mid = left + ((right - left) >> 1);
             // 中间最大
             if (arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1]) {

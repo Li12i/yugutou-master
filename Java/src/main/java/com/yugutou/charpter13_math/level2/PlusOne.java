@@ -8,7 +8,9 @@ import java.util.Arrays;
 public class PlusOne {
     public static void main(String[] args) {
         int[] digital = {9};
-        System.out.println(Arrays.toString(plusOne(digital)));
+        int[] arr = {9,9,9};
+//        System.out.println(Arrays.toString(plusOne(digital)));
+        System.out.println(Arrays.toString(plusOne(arr)));
     }
 
     public static int[] plusOne(int[] digits) {
